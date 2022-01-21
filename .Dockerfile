@@ -7,7 +7,7 @@ RUN go mod download
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o /app/url-shortner cmd/url-shortner/main.go
 
 
-FROM scratch
+FROM alpine
 
 WORKDIR /app
 COPY --from=builder /app/url-shortner /app/
