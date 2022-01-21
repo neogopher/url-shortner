@@ -2,7 +2,7 @@
 package app
 
 import (
-	"url-shortner/pkg/domain/repository/url/memory"
+	"url-shortner/pkg/domain/repository/url/file"
 	"url-shortner/pkg/handlers"
 	"url-shortner/pkg/services"
 
@@ -10,7 +10,8 @@ import (
 )
 
 func Start() {
-	repo := memory.NewMemoryRepository()
+	// repo := memory.NewMemoryRepository()
+	repo := file.NewFileRepository("links.txt")
 	service := services.NewShortnerService(repo)
 	handler := handlers.NewHTTPHandler(*service)
 
