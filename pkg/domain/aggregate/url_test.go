@@ -3,6 +3,8 @@ package aggregate
 
 import (
 	"testing"
+	"url-shortner/internal/hash"
+	"url-shortner/pkg/domain/entity"
 )
 
 func TestNewURL(t *testing.T) {
@@ -57,6 +59,39 @@ func TestNewURL(t *testing.T) {
 					t.Errorf("NewURL() error = %v, expectedErr %v", err, tt.expectedErr)
 					return
 				}
+			}
+		})
+	}
+}
+
+func TestURL_GetID(t *testing.T) {
+	path := "http://www.google.com"
+	shortCode := hash.GenerateShortCode(path)
+
+	googleURL := &URL{
+		link: &entity.Link{
+			ID:       shortCode,
+			FullPath: path,
+		},
+	}
+
+	type fields struct {
+		link *entity.Link
+	}
+	tests := []struct {
+		name string
+		want string
+	}{
+		{
+			name: "Valid ID",
+			want: shortCode,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			u := googleURL
+			if got := u.GetID(); got != tt.want {
+				t.Errorf("URL.GetID() = %v, want %v", got, tt.want)
 			}
 		})
 	}

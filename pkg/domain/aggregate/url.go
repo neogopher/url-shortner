@@ -39,3 +39,8 @@ func NewURL(path string) (URL, error) {
 		},
 	}, nil
 }
+
+// GetID returns id/shortCode of the URL.
+func (u *URL) GetID() string {
+	return u.link.ID
+}
