@@ -19,3 +19,13 @@ func NewFileRepository() *FileRepository {
 		urls: make(map[string]aggregate.URL),
 	}
 }
+
+// Add adds URL to repository.
+func (fr *FileRepository) Add(url aggregate.URL) error {
+	return nil
+}
+
+// Get gets URL from the repository.
+func (fr *FileRepository) Get(shortCode string) (aggregate.URL, error) {
+	return aggregate.URL{}, nil
+}
