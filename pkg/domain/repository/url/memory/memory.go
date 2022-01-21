@@ -13,7 +13,7 @@ type MemoryRepository struct {
 	mu   sync.Mutex
 }
 
-// NewRepository is a factory function for creating MemoryRepository.
+// NewMemoryRepository is a factory function for creating MemoryRepository.
 func NewMemoryRepository() *MemoryRepository {
 	return &MemoryRepository{
 		urls: make(map[string]aggregate.URL),
