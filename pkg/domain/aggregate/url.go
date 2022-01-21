@@ -1,7 +1,15 @@
 // Package aggregate holds aggregates that combine multiple entities into full objects.
 package aggregate
 
-import "url-shortner/pkg/domain/entity"
+import (
+	"errors"
+	"url-shortner/pkg/domain/entity"
+)
+
+var (
+	ErrInvalidPath = errors.New("path is invalid")
+	ErrEmptyPath   = errors.New("path should not be empty")
+)
 
 // URL represents a type of Link.
 type URL struct {
