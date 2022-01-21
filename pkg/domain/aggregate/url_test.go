@@ -75,9 +75,6 @@ func TestURL_GetID(t *testing.T) {
 		},
 	}
 
-	type fields struct {
-		link *entity.Link
-	}
 	tests := []struct {
 		name string
 		want string
@@ -92,6 +89,36 @@ func TestURL_GetID(t *testing.T) {
 			u := googleURL
 			if got := u.GetID(); got != tt.want {
 				t.Errorf("URL.GetID() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func TestURL_GetFullPath(t *testing.T) {
+	path := "http://www.google.com"
+	shortCode := hash.GenerateShortCode(path)
+
+	googleURL := &URL{
+		link: &entity.Link{
+			ID:       shortCode,
+			FullPath: path,
+		},
+	}
+
+	tests := []struct {
+		name string
+		want string
+	}{
+		{
+			name: "Valid URL",
+			want: path,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			u := googleURL
+			if got := u.GetFullPath(); got != tt.want {
+				t.Errorf("URL.GetFullPath() = %v, want %v", got, tt.want)
 			}
 		})
 	}

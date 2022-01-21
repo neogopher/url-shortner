@@ -44,3 +44,8 @@ func NewURL(path string) (URL, error) {
 func (u *URL) GetID() string {
 	return u.link.ID
 }
+
+// GetFullPath returns full path of the URL.
+func (u *URL) GetFullPath() string {
+	return u.link.FullPath
+}
