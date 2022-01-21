@@ -14,5 +14,5 @@ func getHash(text string) [16]byte {
 // generateShortCode returns first 8 characters of above hash.
 func generateShortCode(text string) string {
 	hash := getHash(text)
-	return hex.EncodeToString(hash[:][:8])
+	return hex.EncodeToString(hash[:])[:8]
 }
