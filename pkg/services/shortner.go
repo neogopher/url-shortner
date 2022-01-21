@@ -14,3 +14,11 @@ func NewShortnerService(u url.Repository) *ShortnerService {
 		urls: u,
 	}
 }
+
+func (s *ShortnerService) Shorten(fullPath string) (string, error) {
+	return "", nil
+}
+
+func (s *ShortnerService) GetFullPath(shortCode string) (string, error) {
+	return "", nil
+}
