@@ -20,6 +20,7 @@ func NewMemoryRepository() *MemoryRepository {
 	}
 }
 
+// Add adds URL to repository.
 func (mr *MemoryRepository) Add(url aggregate.URL) error {
 	mr.mu.Lock()
 	mr.urls[url.GetID()] = url
@@ -28,6 +29,7 @@ func (mr *MemoryRepository) Add(url aggregate.URL) error {
 	return nil
 }
 
+// Get gets URL from the repository.
 func (mr *MemoryRepository) Get(shortCode string) (aggregate.URL, error) {
 	u, ok := mr.urls[shortCode]
 	if !ok {
