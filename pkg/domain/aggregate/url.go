@@ -3,7 +3,10 @@ package aggregate
 
 import (
 	"errors"
+	"url-shortner/internal/hash"
 	"url-shortner/pkg/domain/entity"
+
+	"net/url"
 )
 
 var (
@@ -19,5 +22,20 @@ type URL struct {
 // NewURL is a factory function to create URL.
 // It will validate the supplied path.
 func NewURL(path string) (URL, error) {
+	if path == "" {
+		return URL{}, ErrEmptyPath
+	}
 
+	if _, err := url.ParseRequestURI(path); err != nil {
+		return URL{}, ErrInvalidPath
+	}
+
+	shortCode := hash.GenerateShortCode(path)
+
+	return URL{
+		link: &entity.Link{
+			ID:       shortCode,
+			FullPath: path,
+		},
+	}, nil
 }
