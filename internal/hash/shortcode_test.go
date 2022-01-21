@@ -32,7 +32,7 @@ func Test_getHash(t *testing.T) {
 	}
 }
 
-func Test_generateShortCode(t *testing.T) {
+func Test_GenerateShortCode(t *testing.T) {
 	type args struct {
 		text string
 	}
@@ -51,7 +51,7 @@ func Test_generateShortCode(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := generateShortCode(tt.args.text); got != tt.want {
+			if got := GenerateShortCode(tt.args.text); got != tt.want {
 				t.Errorf("generateShortCode() = %v, want %v", got, tt.want)
 			}
 		})

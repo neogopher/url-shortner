@@ -6,13 +6,13 @@ import (
 	"encoding/hex"
 )
 
-// getHash generates 128 bit hash of given text.
+// GetHash generates 128 bit hash of given text.
 func getHash(text string) [16]byte {
 	return md5.Sum([]byte(text))
 }
 
-// generateShortCode returns first 8 characters of above hash.
-func generateShortCode(text string) string {
+// GenerateShortCode returns first 8 characters of above hash.
+func GenerateShortCode(text string) string {
 	hash := getHash(text)
 	return hex.EncodeToString(hash[:])[:8]
 }
