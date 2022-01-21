@@ -18,3 +18,11 @@ func NewMemoryRepository() *MemoryRepository {
 		urls: make(map[string]aggregate.URL),
 	}
 }
+
+func (mr *MemoryRepository) Add(aggregate.URL) error {
+	return nil
+}
+
+func (mr *MemoryRepository) Get(shortCode string) (aggregate.URL, error) {
+	return aggregate.URL{}, nil
+}
